@@ -1,0 +1,14 @@
+ul{
+    list-style: none;
+}
+.main{
+    display: flex;
+    flex-direction: column;
+}
+#orderButton {
+    margin: 1rem 0 2rem 2rem;
+    padding: 0.5rem;
+    background-color: rgb(227, 72, 72);
+    color: lightgoldenrodyellow;
+    font-size: 1rem;
+}
