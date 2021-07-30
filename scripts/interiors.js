@@ -1,4 +1,4 @@
-import { getInterior, setInterior } from "./database.js";
+import { getInterior, getOrderBuilder, setInterior } from "./database.js";
 
 const interiors = getInterior()
 document.addEventListener(
@@ -6,7 +6,7 @@ document.addEventListener(
     (event) =>{
         if (event.target.name === "styles"){
             setInterior(parseInt(event.target.value))
-            window.alert(`You chose interior style ${event.target.value}`)
+            document.dispatchEvent(new CustomEvent("stateChanged"))
         }
     }
 )
@@ -15,9 +15,16 @@ export const Interiors= () =>{
         <ul>`
     const interiorsHtml = interiors.map(
         interior =>{
-            return `<li>
-            <input type="radio" name="styles" value="${interior.id}" /> ${interior.name}
-        </li>`
+            if(interior.id === getOrderBuilder().interiorsId){
+                return `<li>
+                <input type="radio" name="styles" value="${interior.id}" checked/> ${interior.name}
+                </li>`
+            }else{
+                return `<li>
+                <input type="radio" name="styles" value="${interior.id}" /> ${interior.name}
+                </li>`
+            }
+            
         }
     )
     html+= interiorsHtml.join("")    

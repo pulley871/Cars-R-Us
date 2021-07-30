@@ -1,4 +1,4 @@
-import { getPaintColors, setColor } from "./database.js";
+import { getOrderBuilder, getPaintColors, setColor } from "./database.js";
 
 const paintColors = getPaintColors();
 
@@ -7,7 +7,8 @@ document.addEventListener(
     (event) =>{
         if (event.target.name === "colors"){
             setColor(parseInt(event.target.value))
-            window.alert(`You chose color ${event.target.value}`)
+            document.dispatchEvent(new CustomEvent("stateChanged"))
+            
         }
     }
 )
@@ -17,9 +18,16 @@ export const PaintColors = () =>{
         <ul>`
     const paintColorsHtml = paintColors.map(
         color =>{
-            return `<li>
-            <input type="radio" name="colors" value="${color.id}" /> ${color.name}
-        </li>`
+            if (color.id === getOrderBuilder().paintColorsId){
+                return `<li>
+                <input type="radio" name="colors" value="${color.id}" checked/> ${color.name}
+                 </li>`
+            }else{
+                return `<li>
+                <input type="radio" name="colors" value="${color.id}" /> ${color.name}
+                </li>`
+            }
+            
         }
     )
     html+= paintColorsHtml.join("")    

@@ -1,12 +1,19 @@
-import { setType } from "./database.js"
+import { setType, getTypes, getOrderBuilder } from "./database.js"
 
 export const Type = () =>{
-    return  `<ul>
-            <li><input type="radio" name="type" value="1" checked/> Car</li>
-            <li><input type="radio" name="type" value="2" /> SUV</li>
-            <li><input type="radio" name="type" value="3" /> Truck</li>
-            </ul>
-    `
+    const types = getTypes()
+    let htmlString = `<ul>`
+    const mappedTypes = types.map (type =>{
+        if (type.id === getOrderBuilder().typeId){
+            return `<li><input type="radio" name="type" value="${type.id}" checked/>${type.type}</li>`
+        }else{
+            return `<li><input type="radio" name="type" value="${type.id}"/>${type.type}</li>`
+        }
+
+    })
+    htmlString += mappedTypes.join("")
+    htmlString += `</ul>`
+    return htmlString
 }
 
 document.addEventListener(
@@ -14,7 +21,8 @@ document.addEventListener(
     (event) => {
         if (event.target.name === "type"){
             setType(parseInt(event.target.value))
-            window.alert(`You chose a style ${event.target.value}`)
+            document.dispatchEvent(new CustomEvent("stateChanged"))
+            
         }
     }
 )

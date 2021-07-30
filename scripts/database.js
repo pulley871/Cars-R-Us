@@ -75,6 +75,11 @@ const database = {
             price: 650
         },
     ],
+    types: [
+        {id:1, type:"Car"},
+        {id:2, type:"SUV"},
+        {id:3, type:"Truck"}
+    ],
     orderBuilder: {},
     customOrders: []
 }
@@ -94,6 +99,12 @@ export const getWheels = () => {
 }
 export const getOrders = () => {
     return database.customOrders.map(order =>({...order}))
+}
+export const getOrderBuilder = () => {
+    return database.orderBuilder
+}
+export const getTypes = () => {
+    return database.types.map(type =>({...type}))
 }
 //setter functions for the cars items selected
 

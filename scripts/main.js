@@ -5,7 +5,7 @@ import { Technologys } from "./technologys.js"
 import { Wheels } from "./wheels.js"
 import {addCustomOrder} from "./database.js"
 import {Type} from "./vehicleType.js"
-
+import {SelectionsDisplay} from "./orderOptionsSelected.js"
 document.addEventListener(
     "click",
     (event) => {
@@ -41,6 +41,9 @@ export const carsRUs = () =>{
         ${Type()}
     </section>
     <article>
+        <section>
+            ${SelectionsDisplay()}
+        </section>
         <button id="orderButton">Create Custom Order</button>
     </article>
 
