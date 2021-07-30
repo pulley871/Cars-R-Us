@@ -24,20 +24,19 @@ export const SelectionsDisplay = () =>{
     }
     if (getOrderBuilder().typeId !== undefined){
         htmlString += `<h3> Type : ${foundType().type} </h3>`
-        
-    }
-    let priceMultiplier = null
         switch (getOrderBuilder().typeId){
             case 1:
-                priceMultiplier = 1.0
+                runningTotal *= 1.0
                 break;
             case 2:
-                priceMultiplier = 1.5
+                runningTotal *= 1.5
                 break;
             case 3:
-                priceMultiplier = 2.25
+                runningTotal *= 2.25
                 break;
         }
-    htmlString += `<h3 class="estimatedTotal">Estimated Total: $${runningTotal * priceMultiplier}</h3>`
+    }
+    
+    htmlString += `<h3 class="estimatedTotal">Estimated Total: $${runningTotal}</h3>`
     return htmlString
 }
