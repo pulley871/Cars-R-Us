@@ -1,9 +1,16 @@
+body{
+    background-color: black;
+    color: whitesmoke;
+}
 ul{
     list-style: none;
 }
-.main{
+main{
     display: flex;
-    flex-direction: column;
+    justify-content: space-evenly;
+}
+.orderDetailsContainer{
+    height: 100vh;
 }
 #orderButton {
     margin: 1rem 0 2rem 2rem;
@@ -11,4 +18,21 @@ ul{
     background-color: rgb(227, 72, 72);
     color: lightgoldenrodyellow;
     font-size: 1rem;
+}
+.selections{
+    background-color: teal;
+    box-shadow: 0.25rem 0.25rem 0.5rem rgb(112, 55, 55);
+    border: 1px dashed limegreen;
+    border-radius: 0.5rem;
+    padding-left: 1em;
+    padding-bottom: .5em;
+    margin-top: 2em;
+    max-width: 40em;
+    
+}
+.selectionsAndOrders{
+    flex-basis: 40%;
+}
+.estimatedTotal {
+    color: rgb(19, 168, 19);
 }

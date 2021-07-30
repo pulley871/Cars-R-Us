@@ -38,6 +38,6 @@ export const SelectionsDisplay = () =>{
                 priceMultiplier = 2.25
                 break;
         }
-    htmlString += `<h3>Estimated Total: $${runningTotal * priceMultiplier}</h3>`
+    htmlString += `<h3 class="estimatedTotal">Estimated Total: $${runningTotal * priceMultiplier}</h3>`
     return htmlString
 }
